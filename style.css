@@ -1,0 +1,141 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    height: 100%;
+    background-color: rgb(204, 204, 204);
+}
+
+.local-section, 
+.visit-section {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 12px;
+    justify-items: center;
+    align-items: center;
+}
+
+p {
+    font-size: 32px;
+    margin: 0;
+}
+
+.button-clean-local, 
+.button-clean-visit {
+    border: 2px solid green;
+    border-radius: 50%;
+    background-color: rgb(62, 194, 62);
+    width: 80px;
+    height: 80px;
+    font-size: 20px;
+}
+
+.button-miss-local, 
+.button-miss-visit {
+    border: 2px solid red;
+    border-radius: 50%;
+    background-color: rgb(194, 62, 62);
+    width: 80px;
+    height: 80px;
+    font-size: 20px;
+}
+
+.button-gral-stats-local,
+.button-gral-stats-visit  {
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid blue;
+    background-color: rgb(43, 43, 100);
+    color: white;
+}
+
+.div-puntos button {
+    font-size: 20px;
+    padding: 12px;
+    border: 1px solid grey;
+    border-radius: 15px;
+}
+
+.div-puntos :nth-child(3) {
+    background-color: cadetblue;
+}
+.div-puntos :nth-child(4) {
+    background-color: rgb(32, 92, 94);
+    color: white;
+}
+
+.modal {
+    background-color: beige;
+    width: 100%;
+    height: 80vh;
+    padding: 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.modal .divisiones-stats-modal {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.modal .divisiones-stats-modal .button-cuartos-modal {
+    width: 100%;
+    height: 100%;
+}
+
+.modal .divisiones-puntos-modal {
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -12px;
+}
+
+.modal .divisiones-puntos-modal p {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal .div-stats-team {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal p {
+    font-size: 20px;
+}
+
+.modal .div-stats-team .div-stat {
+    display: flex;
+    justify-content: space-between;
+}
