@@ -7,83 +7,146 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    Assistant Basket
+    <nav class="inactive">
+        <button>=</button>
+        <h1>Assistant Basket</h1>
+        <img id="svg-nav1" src="imgs/svg10.svg" alt="" srcset="">
+    </nav>
 
-    <section class="local-section">
-        <div>
-            <button class="button-clean-local">3pts</button>
-            <button class="button-miss-local">3pts</button>
-            <button class="button-clean-local">2pts</button>
-            <button class="button-miss-local">2pts</button>
-            <button class="button-clean-local">1pts</button>
-            <button class="button-miss-local">1pts</button>
+    <article class="inactive" id="app">
+        <img id="svg-app1" src="imgs/svg4.svg" alt="" srcset="">
+    
+        <section class="local-section">
+
+            <article>
+                <h2>Local</h2>
+            </article>
+            <div id="none"></div>
+            <div>
+                <button class="button-clean-local">3pts</button>
+                <button class="button-miss-local">3pts</button>
+                <button class="button-clean-local">2pts</button>
+                <button class="button-miss-local">2pts</button>
+                <button class="button-clean-local">1pts</button>
+                <button class="button-miss-local">1pts</button>
+            </div>
+    
+            <div>
+                <button class="button-gral-stats-local">Reb O</button>
+                <button class="button-gral-stats-local">Reb D</button>
+                <button class="button-gral-stats-local">Per</button>
+                <button class="button-gral-stats-local">Rec</button>
+                <button class="button-gral-stats-local">Robo</button>
+                <button class="button-gral-stats-local">Tapa</button>
+            </div>
+    
+        </section>
+    
+        <div class="div-puntos">
+            <p id="points-local">00</p>
+            <p id="points-visit">00</p>
+            <button id="button-fin-cuarto">Final Cuarto</button>
+            <button id="button-fin-partido">Final partido</button>
+        </div>
+    
+        <section class="visit-section">
+
+            <div>
+                <h2>Visita</h2>
+            </div>
+            <div id="none"></div>
+            <div>
+                <button class="button-clean-visit">3pts</button>
+                <button class="button-miss-visit">3pts</button>
+                <button class="button-clean-visit">2pts</button>
+                <button class="button-miss-visit">2pts</button>
+                <button class="button-clean-visit">1pts</button>
+                <button class="button-miss-visit">1pts</button>
+            </div>
+    
+            <div>
+                <button class="button-gral-stats-visit">Reb O</button>
+                <button class="button-gral-stats-visit">Reb D</button>
+                <button class="button-gral-stats-visit">Per</button>
+                <button class="button-gral-stats-visit">Rec</button>
+                <button class="button-gral-stats-visit">Robo</button>
+                <button class="button-gral-stats-visit">Tapa</button>
+            </div>
+        </section>
+        <section>
+            <button class="button-rehacer" id="deshacer">Deshacer</button>
+            <button class="button-rehacer" id="rehacer">Rehacer</button>
+        </section>
+
+        
+        
+    </article>
+
+    <section class="modal ">
+        <img id="svg-modal-3" src="imgs/svg3.svg" alt="">
+        <img id="svg-modal-6" src="./imgs/svg6.svg" alt="">
+        <img id="svg-modal-11" src="./imgs/svg7.svg" alt="">
+        <img id="svg-modal-10" src="./imgs/svg10.svg" alt="">
+        <div class="modal-puntos">
+            <div class="divisiones-stats-modal">
+                <button class="button-cuartos-modal">Global</button>
+                <button class="button-cuartos-modal">1er cuarto</button>
+                <button class="button-cuartos-modal">2do cuarto</button>
+                <button class="button-cuartos-modal">3er cuarto</button>
+                <button class="button-cuartos-modal">4to cuarto</button>
+            </div>
+            <div class="divisiones-puntos-modal">
+                <p class="puntuacion-cuartos">0 / 0</p>
+                <p class="puntuacion-cuartos">0 / 0</p>
+                <p class="puntuacion-cuartos">0 / 0</p>
+                <p class="puntuacion-cuartos">0 / 0</p>
+                <p class="puntuacion-cuartos">0 / 0</p>
+            </div>
         </div>
 
-        <div>
-            <button class="button-gral-stats-local">Reb O</button>
-            <button class="button-gral-stats-local">Reb D</button>
-            <button class="button-gral-stats-local">Per</button>
-            <button class="button-gral-stats-local">Rec</button>
-            <button class="button-gral-stats-local">Robo</button>
-            <button class="button-gral-stats-local">Tapa</button>
+        <div class="modal-stats">
+            <div class="div-stats-team">
+                <p>Local</p>
+            </div>
+            <div class="div-stats-team">
+                <p>Visita</p>
+                
+            </div>
         </div>
-
     </section>
 
-    <div class="div-puntos">
-        <p id="points-local">0</p>
-        <p id="points-visit">0</p>
-        <button id="button-fin-cuarto">Final Cuarto</button>
-        <button id="button-fin-partido">Final partido</button>
-    </div>
+    <!-- inicio sesion  -->
+    <section class="inactive" id="inicio-sesion">
 
-    <section class="visit-section">
-        <div>
-            <button class="button-clean-visit">3pts</button>
-            <button class="button-miss-visit">3pts</button>
-            <button class="button-clean-visit">2pts</button>
-            <button class="button-miss-visit">2pts</button>
-            <button class="button-clean-visit">1pts</button>
-            <button class="button-miss-visit">1pts</button>
-        </div>
+        <img class="" id="svg4" src="./imgs/svg4.svg" alt="">
+        <img class="" id="svg1" src="./imgs/svg1.svg" alt="">
+        <img class="" id="svg3" src="./imgs/svg3.svg" alt="">
+        <img class="" id="svg9" src="./imgs/svg9.svg" alt="">
+        <img class="" id="svg2" src="./imgs/svg2.svg" alt="">
+        <img class="" id="svg5" src="./imgs/svg5.svg" alt="">
+        <img class="" id="svg6" src="./imgs/svg6.svg" alt="">
+        <img class="" id="svg7" src="./imgs/svg6.svg" alt="">
+        <img class="" id="svg10" src="./imgs/svg6.svg" alt="">
+        <img class="" id="svg8" src="./imgs/svg7.svg" alt="">
+        <img class="" id="svg11" src="./imgs/svg7.svg" alt="">
+        
+        
+        <form class="" id="loginForm">
+            <h2>Iniciar Sesión</h2><br>
 
-        <div>
-            <button class="button-gral-stats-visit">Reb O</button>
-            <button class="button-gral-stats-visit">Reb D</button>
-            <button class="button-gral-stats-visit">Per</button>
-            <button class="button-gral-stats-visit">Rec</button>
-            <button class="button-gral-stats-visit">Robo</button>
-            <button class="button-gral-stats-visit">Tapa</button>
-        </div>
-    </section>
-    <button id="deshacer">Deshacer</button>
-    <button id="rehacer">Rehacer</button>
-    <section class="modal">
-        <div class="divisiones-stats-modal">
-            <button class="button-cuartos-modal">Global</button>
-            <button class="button-cuartos-modal">1er cuarto</button>
-            <button class="button-cuartos-modal">2do cuarto</button>
-            <button class="button-cuartos-modal">3er cuarto</button>
-            <button class="button-cuartos-modal">4to cuarto</button>
-        </div>
-        <div class="divisiones-puntos-modal">
-            <p class="puntuacion-cuartos">0 / 0</p>
-            <p class="puntuacion-cuartos">0 / 0</p>
-            <p class="puntuacion-cuartos">0 / 0</p>
-            <p class="puntuacion-cuartos">0 / 0</p>
-            <p class="puntuacion-cuartos">0 / 0</p>
-        </div>
-        <div class="div-stats-team">
-            <p>Local</p>
-        </div>
-        <div class="div-stats-team">
-            <p>Visita</p>
-            
-        </div>
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email"  required><br>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required><br>
+
+            <button type="submit">Ingresar</button>
+            <p>Es tu primera vez? <span>REGISTRATE</span></p>
+        </form>
     </section>
 
     <!-- <section id="hola"></section> -->
-    <script src="obj.js"></script>
-    <script src="main.js"></script>
+    <script type="module" src="src/obj.js"></script>
+    <script type="module" src="src/main.js"></script>
 </body>
 </html>

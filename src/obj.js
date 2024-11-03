@@ -1,4 +1,4 @@
-let statsMatch = {
+export let statsMatch = {
     local: {
         name: 'Equipo local',
         global: {
@@ -6,35 +6,23 @@ let statsMatch = {
                 triples: {
                     clean: 0,
                     miss: 0,
-        
-                    get totales() {
-                        return this.clean + this.miss
-                    }
+                    totales: 0,
                 },
                 dobles: {
                     clean: 0,
                     miss: 0,
-        
-                    get totales() {
-                        return this.clean + this.miss
-                    }
+                    totales: 0,
                 },
                 libres: {
                     clean: 0,
                     miss: 0,
-        
-                    get totales() {
-                        return this.clean + this.miss
-                    }
+                    totales: 0,
                 },
             },
             rebotes: {
                 defensivos: 0,
                 ofensivos: 0,
-    
-                get totales() {
-                    return this.defensivos + this.ofensivos
-                }
+                totales: 0,
             },
             perdidas: 0,
             recuperaciones: 0,
@@ -48,165 +36,117 @@ let statsMatch = {
                     triples: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     dobles: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     libres: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                 },
                 rebotes: {
                     defensivos: 0,
                     ofensivos: 0,
-        
-                    get totales() {
-                        return this.defensivos + this.ofensivos
-                    }
+                    totales: 0,
                 },
                 perdidas: 0,
                 recuperaciones: 0,
                 robos: 0,
                 tapas: 0,
                 points: 0
-            }, // cuarto 1
+            },
             {
                 tiros: {
                     triples: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     dobles: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     libres: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                 },
                 rebotes: {
                     defensivos: 0,
                     ofensivos: 0,
-        
-                    get totales() {
-                        return this.defensivos + this.ofensivos
-                    }
+                    totales: 0,
                 },
                 perdidas: 0,
                 recuperaciones: 0,
                 robos: 0,
                 tapas: 0,
                 points: 0
-            }, // cuarto 2
+            },
             {
                 tiros: {
                     triples: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     dobles: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     libres: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                 },
                 rebotes: {
                     defensivos: 0,
                     ofensivos: 0,
-        
-                    get totales() {
-                        return this.defensivos + this.ofensivos
-                    }
+                    totales: 0,
                 },
                 perdidas: 0,
                 recuperaciones: 0,
                 robos: 0,
                 tapas: 0,
                 points: 0
-            }, // cuarto 3
+            },
             {
                 tiros: {
                     triples: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     dobles: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     libres: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                 },
                 rebotes: {
                     defensivos: 0,
                     ofensivos: 0,
-        
-                    get totales() {
-                        return this.defensivos + this.ofensivos
-                    }
+                    totales: 0,
                 },
                 perdidas: 0,
                 recuperaciones: 0,
                 robos: 0,
                 tapas: 0,
                 points: 0
-            } // cuarto 4
+            },
         ],
     },
     visit: {
@@ -216,35 +156,23 @@ let statsMatch = {
                 triples: {
                     clean: 0,
                     miss: 0,
-        
-                    get totales() {
-                        return this.clean + this.miss
-                    }
+                    totales: 0,
                 },
                 dobles: {
                     clean: 0,
                     miss: 0,
-        
-                    get totales() {
-                        return this.clean + this.miss
-                    }
+                    totales: 0,
                 },
                 libres: {
                     clean: 0,
                     miss: 0,
-        
-                    get totales() {
-                        return this.clean + this.miss
-                    }
+                    totales: 0,
                 },
             },
             rebotes: {
                 defensivos: 0,
                 ofensivos: 0,
-    
-                get totales() {
-                    return this.defensivos + this.ofensivos
-                }
+                totales: 0,
             },
             perdidas: 0,
             recuperaciones: 0,
@@ -258,165 +186,119 @@ let statsMatch = {
                     triples: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     dobles: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     libres: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                 },
                 rebotes: {
                     defensivos: 0,
                     ofensivos: 0,
-        
-                    get totales() {
-                        return this.defensivos + this.ofensivos
-                    }
+                    totales: 0,
                 },
                 perdidas: 0,
                 recuperaciones: 0,
                 robos: 0,
                 tapas: 0,
                 points: 0
-            }, // cuarto 1
+            },
             {
                 tiros: {
                     triples: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     dobles: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     libres: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                 },
                 rebotes: {
                     defensivos: 0,
                     ofensivos: 0,
-        
-                    get totales() {
-                        return this.defensivos + this.ofensivos
-                    }
+                    totales: 0,
                 },
                 perdidas: 0,
                 recuperaciones: 0,
                 robos: 0,
                 tapas: 0,
                 points: 0
-            }, // cuarto 2
+            },
             {
                 tiros: {
                     triples: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     dobles: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     libres: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                 },
                 rebotes: {
                     defensivos: 0,
                     ofensivos: 0,
-        
-                    get totales() {
-                        return this.defensivos + this.ofensivos
-                    }
+                    totales: 0,
                 },
                 perdidas: 0,
                 recuperaciones: 0,
                 robos: 0,
                 tapas: 0,
                 points: 0
-            }, // cuarto 3
+            },
             {
                 tiros: {
                     triples: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     dobles: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                     libres: {
                         clean: 0,
                         miss: 0,
-            
-                        get totales() {
-                            return this.clean + this.miss
-                        }
+                        totales: 0,
                     },
                 },
                 rebotes: {
                     defensivos: 0,
                     ofensivos: 0,
-        
-                    get totales() {
-                        return this.defensivos + this.ofensivos
-                    }
+                    totales: 0,
                 },
                 perdidas: 0,
                 recuperaciones: 0,
                 robos: 0,
                 tapas: 0,
                 points: 0
-            } // cuarto 4
+            },
         ],
     }
 }
+
+window.statsMatch = statsMatch

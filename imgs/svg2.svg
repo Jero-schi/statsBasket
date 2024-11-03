@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 153.95 153.95">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #db5c05;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #ffb31a;
+        stroke-miterlimit: 10;
+        stroke-width: 3.24px;
+      }
+    </style>
+  </defs>
+  <g id="BACKGROUND">
+    <circle class="cls-1" cx="76.97" cy="76.97" r="76.97" transform="translate(-31.88 76.97) rotate(-45)"/>
+    <path class="cls-2" d="M19.84,128.55l27.05-61.97c5.79-13.26,4.59-30.54-2.89-41.87l-8.38-12.68"/>
+    <path class="cls-2" d="M134.1,128.55l-27.05-61.97c-5.79-13.26-4.59-30.54,2.89-41.87l8.38-12.68"/>
+    <line class="cls-2" x1="76.97" x2="76.97" y2="153.95"/>
+  </g>
+</svg>

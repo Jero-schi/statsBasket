@@ -1,3 +1,218 @@
+import { statsMatch } from "./obj.js"
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc, deleteDoc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBv97v1rZHZ78yjmYkg7Kub5ZnIa6OhHnU",
+    authDomain: "basketstats-dc373.firebaseapp.com",
+    projectId: "basketstats-dc373",
+    storageBucket: "basketstats-dc373.appspot.com",
+    messagingSenderId: "989572863188",
+    appId: "1:989572863188:web:25a6206c08c607f7aa5741"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app)
+const auth = getAuth(app)
+
+console.log(auth);
+
+function registrarUsuario(email, password) {
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user
+            console.log('usuario registrado: ', user);
+        })
+        .catch(error => {
+            const errorCode = error.errorCode
+            const errorMessage = error.message
+            console.error('error al registrar: ', errorCode, errorMessage)
+        })
+}
+
+function iniciarSesion(email, password) {
+    signInWithEmailAndPassword(auth, email, password)
+        .then(userCredential => {
+            const user = userCredential.user
+            console.log('sesion iniciada: ', user);
+            
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error("Error al iniciar sesión:", errorCode, errorMessage);
+        })
+}
+iniciarSesion('jeronimocomaschi05@gmail.com', 'Jer0,schi')
+
+function cerrarSesion() {
+    signOut(auth).then(() => {
+        console.log('sesion cerrada');
+    }).catch(error => {
+        console.error("Error al cerrar sesión:", error);
+    })
+}
+
+document.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const email = document.getElementById('email').value
+    const password = document.getElementById('password').value
+
+    registrarUsuario(email, password)
+})
+
+let currentUserId
+let partidosUser = []
+
+onAuthStateChanged(auth, user => {
+    console.log(user);
+    
+    
+    if (user) {
+        currentUserId = user.uid
+        
+        const userDocRef = doc(db, 'users', currentUserId)
+        getDoc(userDocRef).then(docSnap => {
+            if (docSnap.exists()) {
+                console.log('ya existen documentos');
+                
+                partidosUser = docSnap.data().partidos || []
+                console.log('partidos cargados', partidosUser);
+                
+            } else {
+                setDoc(userDocRef, {
+                    email: user.email,
+                    partidos: []
+                }).then(() => {
+                    console.log('datos guardados: ', currentUserId);
+                    
+                }).catch((e) => {
+                    console.error(e)
+                })
+
+            }
+        }).catch(e => {
+            console.error(e)
+        })
+    } 
+})
+
+function guardarObjetoLocal() {
+    localStorage.setItem('statsMatch', JSON.stringify(statsMatch))
+}
+
+function cargarObjetoLocal() {
+    
+    const savedData = localStorage.getItem('statsMatch')
+    const dataJSON = JSON.parse(savedData)
+    if (savedData) {
+        Object.assign(statsMatch, structuredClone(dataJSON))
+        pintarPuntosCuartos()
+        pintarStatsCuartos()
+        pintarStatsGlobal()
+        pointsLocalHTML.innerText = statsMatch.local.global.points
+        pointsVisitHTML.innerText = statsMatch.visit.global.points
+    }
+}
+
+window.onload = cargarObjetoLocal
+window.addEventListener('beforeunload', () => {
+    if (localStorage.getItem('statsMatch')) {
+        localStorage.setItem('statsMatch', JSON.stringify(statsMatch));
+    }
+})
+
+async function createMatch(statsMatch) {
+    
+    const userDocRef = doc(db, 'users', currentUserId)
+    console.log(userDocRef);
+    
+    updateDoc(userDocRef, {
+        'partidos': arrayUnion(statsMatch)
+    }).then(() => {
+        console.log('partido guardado con exito');
+        return '10'
+    }).catch(e => {
+        console.error(e)
+    })
+}
+
+// async function updateMatch(matchId, matchData) {
+//     const userDocRef = doc(db, 'users', currentUserId)
+
+//     updateDoc(userDocRef, {
+//         partidos[partidos.length]: 
+//     })
+
+//     const docRef = doc(getFirestore(), 'partidos', matchId)
+
+//     try {
+//         await setDoc(docRef, matchData)
+//         console.log('se actualizo el partido');
+        
+//     } catch (error) {
+//         console.error(error)
+//     }
+// }
+
+
+
+async function getAllMatch() {
+    const querySnapshot = await getDocs(collection(db, 'partidos'))
+    querySnapshot.forEach(doc => {
+        const id = doc.id
+        const data = doc.data()
+        console.log(id);
+        console.log(data);
+        
+    })
+    
+}
+
+// getAllMatch()
+
+async function getMatch(idMatch) {
+    const docRef = doc(db, 'partidos', idMatch)
+    console.log(idMatch);
+    
+
+    try {
+        const data = await getDoc(docRef)
+        return data.data()
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+async function deleteMatch(idMatch) {
+    const docRef = doc(db,'partidos', idMatch)
+
+    try {
+        await deleteDoc(docRef)
+        console.log('se elimino el partido correctamente');
+        
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+
+async function deleteAllMatch() {
+    const matchsRef = collection(db, 'partidos')
+
+    try {
+        const matchs = await getDocs(matchsRef)
+
+        matchs.forEach(async (match) => {
+            await deleteMatch(match.id)
+        })
+    } catch (error) {
+        
+    }
+}
 
 const buttonsCleanLocal = document.querySelectorAll('.button-clean-local')
 const buttonsCleanVisit = document.querySelectorAll('.button-clean-visit')
@@ -17,9 +232,38 @@ const buttonsCuartos = document.querySelectorAll('.button-cuartos-modal')
 const puntosCuartos = document.querySelectorAll('.puntuacion-cuartos')
 
 let cuartoActual = 0
+let puntosTotalesStorage = 0
 
 const historialDeshacer = []
 const historialRehacer = []
+
+buttonFinPartido.addEventListener('click', async () => {
+    if (cuartoActual == 0) {
+        const matchId = await createMatch(statsMatch)
+        localStorage.setItem('matchId', matchId)
+    } 
+    guardarObjetoLocal()
+
+    localStorage.removeItem('statsMatch')
+    console.log('partido finalizado');
+    resetStats(statsMatch)
+    pintarPuntosCuartos()
+    pintarStatsCuartos()
+    pintarStatsGlobal()
+    pointsLocalHTML.innerText = statsMatch.local.global.points
+    pointsVisitHTML.innerText = statsMatch.visit.global.points
+})
+
+function resetStats(obj) {
+    for (let key in obj) {
+        if (typeof obj[key] === 'number') {
+            obj[key] = 0
+            
+        } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+            resetStats(obj[key])
+        }
+    }
+}
 
 function newPoint(team, cuarto, value) {
     const estadoAnterior = structuredClone(statsMatch)
@@ -30,6 +274,16 @@ function newPoint(team, cuarto, value) {
     statsMatch[team].cuartos[cuarto].points += value
     pintarStatsGlobal()
     pintarPuntosCuartos()
+
+    puntosTotalesStorage += value
+
+    if (puntosTotalesStorage >= 10) {
+        localStorage.setItem('statsMatch', JSON.stringify(statsMatch));
+        
+        puntosTotalesStorage = 0;
+        
+        console.log('Datos guardados en localStorage');
+    }
 }
 
 function newStat(team, cuarto, stat) {
@@ -50,8 +304,10 @@ function newShoot(team, cuarto, tipe, result) {
     historialRehacer.length = 0
 
     statsMatch[team].global.tiros[tipe][result]++
+    statsMatch[team].global.tiros[tipe].totales++
 
     statsMatch[team].cuartos[cuarto].tiros[tipe][result]++
+    statsMatch[team].cuartos[cuarto].tiros[tipe].totales++
     pintarStatsGlobal()
 
 }
@@ -62,32 +318,39 @@ function newRebote(team, cuarto, tipe) {
     historialRehacer.length = 0
 
     statsMatch[team].global.rebotes[tipe]++
+    statsMatch[team].global.rebotes.totales++
 
     statsMatch[team].cuartos[cuarto].rebotes[tipe]++
+    statsMatch[team].cuartos[cuarto].rebotes.totales++
     pintarStatsGlobal()
 }
 
 function deshacer() {
-    const estadoAnterior = historialDeshacer.pop()
+    let estadoAnterior = historialDeshacer.pop()
 
     historialRehacer.push(structuredClone(statsMatch))
 
-    statsMatch = estadoAnterior
+    Object.assign(statsMatch, structuredClone(estadoAnterior))
     pintarStatsGlobal()
 }
 
 function rehacer() {
-    const estadoAnterior = structuredClone(statsMatch)
+    let estadoAnterior = structuredClone(statsMatch)
     historialDeshacer.push(estadoAnterior)
 
-    statsMatch = historialRehacer.pop()
+    let ultimoEstado = historialRehacer.pop()
+
+    Object.assign(statsMatch, structuredClone(ultimoEstado))
 }
+
+
 
 buttonsCleanLocal.forEach(button => 
     button.addEventListener('click', ()=> {
         const textButton = button.textContent;
         if (textButton === '3pts') {
             newShoot('local', cuartoActual, 'triples', 'clean')
+
             newPoint('local', cuartoActual, 3)
             
         } else if (textButton === '2pts') {
@@ -253,11 +516,16 @@ function pintarStatsGlobal() {
         
         conteinerStats[0].appendChild(divStats)
         
-        item.forEach(element => {
-            const pStats = document.createElement('p')
-            pStats.textContent = element
-            divStats.appendChild(pStats)
-        })
+        const pStats = document.createElement('p')
+        const pPoints = document.createElement('p')        
+        
+        pStats.textContent = item[0]
+        pPoints.textContent = item[1]
+        divStats.appendChild(pStats)
+        divStats.appendChild(pPoints)
+
+        // item.forEach(element => {
+        // })
     })
     
     arrayStatsVisit.forEach(item => {
@@ -266,11 +534,13 @@ function pintarStatsGlobal() {
         
         conteinerStats[1].appendChild(divStats)
         
-        item.forEach(element => {
-            const pStats = document.createElement('p')
-            pStats.textContent = element
-            divStats.appendChild(pStats)
-        })
+        const pStats = document.createElement('p')
+        const pPoints = document.createElement('p')        
+        
+        pStats.textContent = item[0]
+        pPoints.textContent = item[1]
+        divStats.appendChild(pPoints)
+        divStats.appendChild(pStats)
     })
 }
 
@@ -278,7 +548,6 @@ pintarStatsGlobal()
 
 function pintarPuntosCuartos() {
     puntosCuartos.forEach((item, index) => {
-        console.log(item);
         if (index == 0) {
             item.innerText = `${statsMatch.local.global.points} / ${statsMatch.visit.global.points}`
         } else {
@@ -292,7 +561,6 @@ pintarPuntosCuartos()
 buttonsCuartos.forEach((item, index) => {
     item.addEventListener('click', () => {
         pintarStatsCuartos(index)
-        console.log(index);
     })
 })
 
@@ -315,6 +583,8 @@ function pintarStatsCuartos(cuarto) {
         
         item.forEach(element => {
             const pStats = document.createElement('p')
+            console.log(element);
+            
             pStats.textContent = element
             divStats.appendChild(pStats)
         })
