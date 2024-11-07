@@ -19,6 +19,10 @@ const auth = getAuth(app)
 
 console.log(auth);
 
+document.body.addEventListener('touchmove', (e) => {
+    e.preventDefault()
+}, { passive: false })
+
 function registrarUsuario(email, password) {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
