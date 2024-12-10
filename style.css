@@ -13,8 +13,10 @@ body {
     height: 100%;
     background-color: #2e2e2e;
     overflow-x: hidden;
+    
     touch-action: none;
-    position: fixed;
+    /* position: fixed; */
+    /* z-index: 100; */
 }
 
 .inactive {
@@ -182,7 +184,7 @@ body {
 
 nav {
     background-color: #d99816;
-    width: 100%;
+    width: 100vw;
     height: 8vh;
     border-bottom: 10px solid #db5c05;
     display: flex;
@@ -393,6 +395,8 @@ p {
     display: flex;
     flex-direction: column;
     gap: 28px;
+
+    position: relative;
 
     /* overflow-x: hidden; */
 }

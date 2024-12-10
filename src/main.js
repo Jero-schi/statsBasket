@@ -17,6 +17,14 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
 const auth = getAuth(app)
 
+const btnSubmit = document.querySelector('#btn-submit')
+const inputPassword = document.querySelector('#password')
+const inputEmail = document.querySelector('#email')
+
+console.log(inputPassword, inputEmail);
+
+
+
 console.log(auth);
 
 document.body.addEventListener('touchmove', (e) => {
@@ -49,7 +57,14 @@ function iniciarSesion(email, password) {
             console.error("Error al iniciar sesión:", errorCode, errorMessage);
         })
 }
+
+// btnSubmit.addEventListener('click', () => {
+//     console.log(inputEmail.value)
+//     console.log(inputPassword.value)
+// }
 iniciarSesion('jeronimocomaschi05@gmail.com', 'Jer0,schi')
+
+
 
 function cerrarSesion() {
     signOut(auth).then(() => {
@@ -59,14 +74,27 @@ function cerrarSesion() {
     })
 }
 
+const sectionInicioSesion = document.querySelector('#inicio-sesion')
+const sectionApp = document.querySelector('#app')
+const sectionModal = document.querySelector('.modal')
+const nav = document.querySelector('nav')
+
 document.getElementById('loginForm').addEventListener('submit', (e) => {
     e.preventDefault()
 
     const email = document.getElementById('email').value
     const password = document.getElementById('password').value
 
-    registrarUsuario(email, password)
+    // console.log(email, password);
+    
+    iniciarSesion(email, password)
+
+    sectionInicioSesion.classList.add('inactive')
+    sectionApp.classList.remove('inactive')
+    sectionModal.classList.remove('inactive')
+    nav.classList.remove('inactive')
 })
+
 
 let currentUserId
 let partidosUser = []
